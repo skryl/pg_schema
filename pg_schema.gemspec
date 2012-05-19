@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ["rut216@gmail.com"]
   s.homepage    = "http://skryl.org"
   s.summary     = %q{Postgres schema support}
-  s.description = %q{Support for postgres schema}
+  s.description = %q{Support for postgres schemas}
 
   s.rubyforge_project = "pg_schema"
 
