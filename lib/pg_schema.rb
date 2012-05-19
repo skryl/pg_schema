@@ -1,3 +1,5 @@
+require 'pg_schema/postgresql_adapter'
+
 module PgSchema
   module Loader
     extend ActiveSupport::Concern

@@ -4,8 +4,6 @@ namespace :db do
 
   desc 'Create the database defined in config/database.yml for the current Rails.env - also makes test database if in development mode'
   task :create_with_schema => :load_config do
-    require 'postgresql_schema'
-
     # Make the test database at the same time as the development one, if it exists
     if Rails.env.development? && ActiveRecord::Base.configurations['test']
       create_database(ActiveRecord::Base.configurations['test'])
