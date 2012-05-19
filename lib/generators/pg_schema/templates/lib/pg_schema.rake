@@ -6,14 +6,14 @@ namespace :db do
   task :create_with_schema => :load_config do
     # Make the test database at the same time as the development one, if it exists
     if Rails.env.development? && ActiveRecord::Base.configurations['test']
-      create_database('test', ActiveRecord::Base.configurations['test'])
+      create_database(ActiveRecord::Base.configurations['test'])
     end
-    create_database(Rails.env, ActiveRecord::Base.configurations[Rails.env])
+    create_database(ActiveRecord::Base.configurations[Rails.env])
   end
   
-  def create_database(env, config)
+  def create_database(config)
     if valid_connection?(config)
-      $stderr.puts "#{config['database']} already exists in #{env}"
+      $stderr.puts "#{config['database']} already exists"
     else
       case config['adapter']
       when 'postgresql'
@@ -26,16 +26,16 @@ namespace :db do
             ActiveRecord::Base.establish_connection(config.merge('database' => 'postgres', 'schema_search_path' => 'public'))
             ActiveRecord::Base.connection.create_database(config['database'], config.merge('encoding' => encoding))
             ActiveRecord::Base.establish_connection(config)
-            $stderr.puts "Database #{config['database']} has been created in #{env}."
+            $stderr.puts "Database #{config['database']} has been created."
           end
           ActiveRecord::Base.connection.create_schema(default_schema, config['username'])
-          $stderr.puts "Schema #{default_schema} has been created in #{env}."
+          $stderr.puts "Schema #{default_schema} has been created in #{config['database']}."
         rescue
           $stderr.puts $!, *($!.backtrace)
-          $stderr.puts "Couldn't create database #{config.inspect} in #{env}"
+          $stderr.puts "Couldn't create database #{config.inspect}."
         end
       else
-        $stderr.puts "Only PostgreSQL is supported!"
+        $stderr.puts "Only PostgreSQL is supported."
       end
     end
   end
