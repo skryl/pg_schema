@@ -1,5 +1,3 @@
-require 'version'
-
 module PgSchema
   module Loader
     extend ActiveSupport::Concern
