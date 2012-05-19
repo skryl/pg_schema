@@ -31,3 +31,7 @@ module PgSchema
 
   end
 end
+
+class ActiveRecord::Base
+  include PgSchema::Loader
+end
