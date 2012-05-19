@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = PgSchema::VERSION
   s.authors     = ["Alex Skryl"]
   s.email       = ["rut216@gmail.com"]
-  s.homepage    = "http://skryl.org"
+  s.homepage    = "http://github.com/skryl/pg_schema"
   s.summary     = %q{Postgres schema support}
   s.description = %q{Support for postgres schemas}
 
