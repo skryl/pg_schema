@@ -32,7 +32,7 @@ Test in console
 
 # Issues
 
-* Running the pg_schema:install with the schema_search_path set may break if the
-  database already exists but the specified schema doesn't. Remove the
-  schema_search_path from your database.yml, run pg_schema:install, then add the
-  search path back before running db:create_with_schema.
+* Running *pg_schema:install* with schema_search_path already set may break if
+  the database exists but the specified schema doesn't. Remove the
+  schema_search_path from your database.yml, run *pg_schema:install*, then add
+  the search path back before running db:create_with_schema.
